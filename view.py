@@ -148,3 +148,25 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
 
 
 
+
+
+
+
+
+
+def generate_token(user_id):
+    payload = {'id_usuario': user_id}
+    token = jwt.encode(payload, senha_secreta, algorithm='HS256')
+    return token
+
+def remover_bearer(token):
+    if token.startswith('Bearer '):
+        return token[len('Bearer '):]
+    else:
+        return token
+
+
+
+
+
+
